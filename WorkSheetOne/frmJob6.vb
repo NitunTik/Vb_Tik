@@ -11,28 +11,31 @@
             chkFree3.Enabled = True
 
             Total = Val(lblStartPrice.Text) + Val(lblFree1.Text) + Val(lblFree2.Text) + Val(lblFree3.Text)
-            lblPaidPrice.Text = Total.ToString
-        ElseIf chkForMe.Checked = False Then
-            MessageBox.Show("ต้องการยกเลิกการซื้อรถใช้หรืไม่", "", MessageBoxButtons.YesNo)
-            chkItemsAdd1.Enabled = False
-            chkItemsAdd2.Enabled = False
-            chkItemsAdd3.Enabled = False
-            chkItemsAdd4.Enabled = False
-            chkFree1.Enabled = False
-            chkFree2.Enabled = False
-            chkFree3.Enabled = False
+            lblPaidPrice.Text = Total
+        Else
+            Dim Result As DialogResult
+            Result = MessageBox.Show("ต้องการยกเลิกการซื้อรถใช้หรืไม่", "", MessageBoxButtons.YesNo)
+            If Result = DialogResult.Yes Then
+                chkItemsAdd1.Enabled = False
+                chkItemsAdd2.Enabled = False
+                chkItemsAdd3.Enabled = False
+                chkItemsAdd4.Enabled = False
+                chkFree1.Enabled = False
+                chkFree2.Enabled = False
+                chkFree3.Enabled = False
 
-            chkItemsAdd1.Checked = False
-            chkItemsAdd2.Checked = False
-            chkItemsAdd3.Checked = False
-            chkItemsAdd4.Checked = False
-            chkFree1.Checked = False
-            chkFree2.Checked = False
-            chkFree3.Checked = False
+                chkItemsAdd1.Checked = False
+                chkItemsAdd2.Checked = False
+                chkItemsAdd3.Checked = False
+                chkItemsAdd4.Checked = False
+                chkFree1.Checked = False
+                chkFree2.Checked = False
+                chkFree3.Checked = False
+                lblPaidPrice.Text = ""
+            Else
+                chkForMe.Checked = True
 
-            lblPaidPrice.Text = ""
-            Total = Val(lblStartPrice.Text) + Val(lblFree1.Text) + Val(lblFree2.Text) + Val(lblFree3.Text)
-            lblPaidPrice.Text = Total.ToString
+            End If
         End If
     End Sub
 
