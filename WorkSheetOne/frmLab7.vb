@@ -22,6 +22,11 @@
         Else
             cboOutput.Items.Add(lstAdd.Text)
             lstAdd.Items.Remove(lstAdd.Text)
+            Dim q As Integer
+            q = cboOutput.Items.Count
+            cboOutput.SelectedIndex = q - 1
+            q = lstAdd.Items.Count
+            lstAdd.SelectedIndex = q - 1
         End If
     End Sub
 
@@ -33,29 +38,39 @@
             cboOutput.Items.Add(item)
         Next
         lstAdd.Items.Clear()
+        Dim q As Integer
+        q = cboOutput.Items.Count
+        cboOutput.SelectedIndex = q - 1
+        q = lstAdd.Items.Count
+        lstAdd.SelectedIndex = q - 1
     End Sub
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
-        If lstAdd.SelectedIndex = -1 Then
+        If cboOutput.SelectedIndex = -1 Then
             MessageBox.Show("กรุณาเลือกลิส")
         Else
             lstAdd.Items.Add(cboOutput.Text)
             cboOutput.Items.Remove(cboOutput.Text)
-            Dim n As Integer
-            n = lstAdd.Items.Count
-            lstAdd.SelectedIndex = n - 1
-            n = cboOutput.Items.Count
-            cboOutput.SelectedIndex = n - 1
+            Dim q As Integer
+            q = lstAdd.Items.Count
+            lstAdd.SelectedIndex = q - 1
+            q = cboOutput.Items.Count
+            cboOutput.SelectedIndex = q - 1
         End If
     End Sub
 
     Private Sub btnBackAll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBackAll.Click
-        If lstAdd.SelectedIndex = -1 Then
+        If cboOutput.SelectedIndex = -1 Then
             MessageBox.Show("กรุณาเลือกลิส")
         End If
         For Each item In cboOutput.Items
             lstAdd.Items.Add(item)
         Next
         cboOutput.Items.Clear()
+        Dim q As Integer
+        q = lstAdd.Items.Count
+        lstAdd.SelectedIndex = q - 1
+        q = cboOutput.Items.Count
+        cboOutput.SelectedIndex = q - 1
     End Sub
 
     Private Sub lstAdd_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstAdd.SelectedIndexChanged
@@ -70,6 +85,7 @@
         cboOutput.Items.Clear()
         txtAdd.Clear()
         lblOutput.Text = ""
+        txtAdd.Focus()
     End Sub
 
     Private Sub btnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExit.Click
