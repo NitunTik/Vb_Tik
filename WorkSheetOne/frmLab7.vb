@@ -22,6 +22,7 @@
         If lstAdd.SelectedIndex = -1 Then
             MessageBox.Show("กรุณาเลือกลิส")
         Else
+<<<<<<< HEAD
             Dim q As Integer = lstAdd.SelectedIndex
             cboOutput.Items.Add(lstAdd.SelectedItem)
             cboOutput.SelectedIndex = cboOutput.Items.Count - 1
@@ -34,6 +35,16 @@
                 End If
             End If
         End If
+=======
+            cboOutput.Items.Add(lstAdd.Text)
+            lstAdd.Items.Remove(lstAdd.Text)
+            Dim q As Integer
+            q = cboOutput.Items.Count
+            cboOutput.SelectedIndex = q - 1
+            q = lstAdd.Items.Count
+            lstAdd.SelectedIndex = q - 1
+        End If
+>>>>>>> master
     End Sub
 
     Private Sub btnMoveAll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMoveAll.Click
@@ -50,6 +61,7 @@
         q = lstAdd.Items.Count
         lstAdd.SelectedIndex = q - 1
     End Sub
+<<<<<<< HEAD
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
         If cboOutput.SelectedIndex = -1 Then
             MessageBox.Show("กรุณาเลือกลิส")
@@ -65,6 +77,19 @@
                     cboOutput.SelectedIndex = q
                 End If
             End If
+=======
+    Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
+        If cboOutput.SelectedIndex = -1 Then
+            MessageBox.Show("กรุณาเลือกลิส")
+        Else
+            lstAdd.Items.Add(cboOutput.Text)
+            cboOutput.Items.Remove(cboOutput.Text)
+            Dim q As Integer
+            q = lstAdd.Items.Count
+            lstAdd.SelectedIndex = q - 1
+            q = cboOutput.Items.Count
+            cboOutput.SelectedIndex = q - 1
+>>>>>>> master
         End If
     End Sub
 

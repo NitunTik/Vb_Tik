@@ -181,7 +181,11 @@ Partial Class frmLab7
         Me.Controls.Add(Me.cboOutput)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmLab7"
+<<<<<<< HEAD
         Me.Text = " "
+=======
+        Me.Text = "frmLab7"
+>>>>>>> master
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
