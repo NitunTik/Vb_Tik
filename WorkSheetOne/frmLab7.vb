@@ -1,11 +1,13 @@
 ﻿Public Class frmLab7
-    Dim q As Integer
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         lstAdd.Items.Add(txtAdd.Text)
         txtAdd.Clear()
         txtAdd.Focus()
+        Dim q As Integer
         q = lstAdd.Items.Count
         lstAdd.SelectedIndex = q - 1
+        q = cboOutput.Items.Count
+        cboOutput.SelectedIndex = q - 1
     End Sub
 
     Private Sub txtAdd_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAdd.TextChanged
@@ -20,13 +22,17 @@
         If lstAdd.SelectedIndex = -1 Then
             MessageBox.Show("กรุณาเลือกลิส")
         Else
-            cboOutput.Items.Add(lstAdd.Text)
-            lstAdd.Items.Remove(lstAdd.Text)
-            Dim q As Integer
-            q = cboOutput.Items.Count
-            cboOutput.SelectedIndex = q - 1
-            q = lstAdd.Items.Count
-            lstAdd.SelectedIndex = q - 1
+            Dim q As Integer = lstAdd.SelectedIndex
+            cboOutput.Items.Add(lstAdd.SelectedItem)
+            cboOutput.SelectedIndex = cboOutput.Items.Count - 1
+            lstAdd.Items.Remove(lstAdd.SelectedItem)
+            If lstAdd.Items.Count <> 0 Then
+                If lstAdd.Items.Count <= q Then
+                    lstAdd.SelectedIndex = lstAdd.Items.Count - 1
+                Else
+                    lstAdd.SelectedIndex = q
+                End If
+            End If
         End If
     End Sub
 
@@ -48,13 +54,17 @@
         If cboOutput.SelectedIndex = -1 Then
             MessageBox.Show("กรุณาเลือกลิส")
         Else
-            lstAdd.Items.Add(cboOutput.Text)
-            cboOutput.Items.Remove(cboOutput.Text)
-            Dim q As Integer
-            q = lstAdd.Items.Count
-            lstAdd.SelectedIndex = q - 1
-            q = cboOutput.Items.Count
-            cboOutput.SelectedIndex = q - 1
+            Dim q As Integer = cboOutput.SelectedIndex
+            lstAdd.Items.Add(cboOutput.SelectedItem)
+            lstAdd.SelectedIndex = lstAdd.Items.Count - 1
+            cboOutput.Items.Remove(cboOutput.SelectedItem)
+            If cboOutput.Items.Count <> 0 Then
+                If cboOutput.Items.Count <= q Then
+                    cboOutput.SelectedIndex = cboOutput.Items.Count - 1
+                Else
+                    cboOutput.SelectedIndex = q
+                End If
+            End If
         End If
     End Sub
 
